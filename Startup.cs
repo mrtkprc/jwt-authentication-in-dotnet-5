@@ -71,6 +71,8 @@ namespace jwt_authentication_in_dotnet_5
 
             app.UseRouting();
 
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
