@@ -52,9 +52,6 @@ namespace jwt_authentication_in_dotnet_5
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                 };
             });
-
-            services.AddMvc();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
