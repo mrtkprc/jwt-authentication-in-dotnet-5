@@ -8,6 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using jwt_authentication_in_dotnet_5.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
@@ -24,7 +25,7 @@ namespace jwt_authentication_in_dotnet_5.Controllers
             _config = config;
         }
 
-        [HttpGet]
+        [HttpGet("Login")]
         public IActionResult Login(string username, string password)
         {
             UserModel login = new UserModel() { Username = username, Password = password };
@@ -81,6 +82,26 @@ namespace jwt_authentication_in_dotnet_5.Controllers
             }
 
             return user;
+        }
+
+        [Authorize]
+        [HttpPost("Post")]
+        public IActionResult Post()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+
+            IList<Claim> claim = identity.Claims.ToList();
+
+            var userName = claim[0].Value;
+
+            return Ok(new {text = $"Welcome to {userName}"});
+        }
+
+        //This are is not secure due to non-existing "Authorize" annotation.
+        [HttpGet("Values")]
+        public ActionResult<IEnumerable<string>> GetValues()
+        {
+            return new[] { "Value1", "Value2" };
         }
     }
 }
