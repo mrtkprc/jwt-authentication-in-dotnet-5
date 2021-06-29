@@ -53,7 +53,7 @@ namespace jwt_authentication_in_dotnet_5
                 };
             });
 
-
+            services.AddMvc();
 
         }
 
