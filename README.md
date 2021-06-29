@@ -11,5 +11,7 @@ import Nuget Package called Microsoft.IdentityModel.Tokens
 
 import Nuget Package called System.IdentityModel.Tokens.Jwt
 
+Add field to "Headers"
 
+Authorization: Bearer <token>
 
