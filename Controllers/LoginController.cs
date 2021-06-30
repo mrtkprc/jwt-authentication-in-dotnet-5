@@ -53,7 +53,7 @@ namespace jwt_authentication_in_dotnet_5.Controllers
             {
                 new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Sub, user.Username),
                 new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Email, Guid.NewGuid().ToString())
+                new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
             var token = new JwtSecurityToken(
